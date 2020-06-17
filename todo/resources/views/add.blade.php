@@ -8,6 +8,9 @@
 
         <div class="form-group">
             <textarea name="description" class="form-control" placeholder="Add Task here"></textarea>
+            @if ($errors->has('description'))
+            <span class="text-danger">{{ $errors->first('description') }}</span>
+            @endif
         </div>
 
 
