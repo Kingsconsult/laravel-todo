@@ -21,6 +21,9 @@ class TasksController extends Controller
 
     public function create(Request $request)
     {
+        $this->validate($request, [
+            'description' => 'required'
+        ]);
         $task = new Task();
         $task->description = $request->description;
         $task->user_id = Auth::id();
@@ -40,6 +43,9 @@ class TasksController extends Controller
 
     public function update(Request $request, Task $task)
     {
+        $this->validate($request, [
+            'description' => 'required'
+        ]);
         if (isset($_POST['delete'])) {
             $task->delete();
             return redirect('/');
